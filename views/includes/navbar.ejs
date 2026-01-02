@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-md bg-body-light sticky-top border-bottom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"
+      ><i class="fa-solid fa-compass"></i
+    ></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">Explore</a>
+      </div>
+      <form class="d-flex nav-search-container ms-auto" role="search">
+        <input
+          class="form-control me-2 nav-searchbar"
+          type="search"
+          placeholder="Search Your Destination"
+          aria-label="Search"
+        />
+        <button class="btn btn nav-search-button" type="submit">Search</button>
+      </form>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link me-2" href="/listings/newListing"
+          >Airbnb Your Home</a
+        >
+        <% if(!currUser) {%>
+        <div class="user-button-container container1">
+          <div class="user-button-circle"></div>
+          <a
+            class="nav-link nav-link-user-button user-button-signup me-2"
+            href="/user/signup"
+            ><b>Sign Up</b></a
+          >
+          <div class="user-button-circle"></div>
+        </div>
+        <div class="user-button-container container2">
+          <div class="user-button-circle"></div>
+          <a
+            class="nav-link nav-link-user-button user-button-login"
+            href="/user/login"
+            ><b>Log In</b></a
+          >
+          <div class="user-button-circle"></div>
+        </div>
+        <% } else { %>
+        <div class="user-button-container container3">
+          <div class="user-button-circle"></div>
+          <a
+            class="nav-link nav-link-user-button user-button-logout"
+            href="/user/logout"
+            ><b>Log Out</b></a
+          >
+          <div class="user-button-circle"></div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

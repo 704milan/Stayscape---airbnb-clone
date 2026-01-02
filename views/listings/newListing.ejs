@@ -1,0 +1,109 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+<body>
+  <div class="row mt-3 g-0 newListing mb-3" >
+    <div class="col-6 offset-3">
+      <div class="mb-3">
+        <h1>Create New Listing</h1>
+      </div>
+
+      <form
+        method="post"
+        action="/listings/newListing"
+        class="needs-validation"
+        novalidate
+        enctype="multipart/form-data"
+      >
+        <div>
+          <div class="mb-3">
+            <label for="title" for="validationCustom01" class="form-label mb-0"
+              >Title</label
+            >
+            <input
+              placeholder="Luxury Houseboat Stay"
+              class="form-control newListing-input"
+              type="text"
+              name="Listing[title]"
+              id="validationCustom01"
+              required
+            />
+            <div class="invalid-feedback mt-0">enter valid title</div>
+            <div class="valid-feedback mt-0">looks good!</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="price" class="form-label mb-0">Price</label>
+            <input
+              placeholder="7200"
+              class="form-control newListing-input"
+              required
+              type="text"
+              name="Listing[price]"
+            />
+
+            <div class="invalid-feedback mt-0">enter valid Price</div>
+            <div class="valid-feedback mt-0">looks good!</div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-lg-8 col-md-8">
+              <label for="location" class="form-label mb-0">Location</label>
+              <input
+                placeholder="Alleppey, Kerala"
+                required
+                class="form-control newListing-input"
+                type="text"
+                name="Listing[location]"
+              />
+              <div class="invalid-feedback mt-0">enter valid location</div>
+              <div class="valid-feedback mt-0">looks good!</div>
+            </div>
+
+            <div class="col-lg-4 col-md-4">
+              <label for="country" class="form-label mb-0">Country</label>
+              <input
+                placeholder="India"
+                class="form-control newListing-input"
+                type="text"
+                name="Listing[country]"
+                required
+              />
+              <div class="invalid-feedback mt-0">enter valid country</div>
+              <div class="valid-feedback mt-0">looks good!</div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-label mb-0">Image</label>
+            <input
+              placeholder="Enter image link"
+              class="form-control newListing-input"
+              type="file"
+              name="Listing[image]"
+              required
+            />
+            <div class="valid-feedback mt-0">looks good!</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label mb-0">Description</label>
+            <textarea
+              type="text"
+              placeholder="Experience Kerala's backwaters in a fully equipped luxury houseboat with traditional charm."
+              class="form-control newListing-description newListing-input"
+              name="Listing[description]"
+              rows="3"
+              cols="20"
+              required
+            ></textarea>
+            <div class="invalid-feedback mt-0">enter description</div>
+            <div class="valid-feedback mt-0">looks good!</div>
+          </div>
+
+          <div>
+            <button class="btn btn-danger">Add</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

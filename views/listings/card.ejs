@@ -1,0 +1,117 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+<div class="show-card row mt-3">
+  <div class="offset-3 show-card-content col-6">
+    <h3 class="mb-3"><%=card.title%></h3>
+    <img
+      class="show-card-img"
+      src="<%= card.image.url %>"
+      alt="listing-image"
+    />
+
+    <div class="card-text">Owned by <i><%= card.owner.username %></i></div>
+    <div class="card-text mt-3"><%= card.description %></div>
+    <div class="card-text mt-2">
+      &#8377;<%= card.price.toLocaleString("en-IN") %>
+    </div>
+    <div class="card-text mt-2"><%= card.location %></div>
+    <div class="card-text mt-2"><%= card.country %></div>
+    <br />
+    <h4 class="mt-3">Where you'll be</h4>
+    <div id="map" class="show-card-img"></div>
+    <% if (currUser && (currUser._id.equals(card.owner._id))) { %>
+    <div class="row row-cols-lg-5 row-cols-md-5 show-card-btns">
+      <form class="mt-3" method="get" action="/listings/edit/<%= card._id %>">
+        <button class="show-card-listing-button btn btn-info btn-sm">
+          Edit
+        </button>
+      </form>
+      <form
+        class="mt-3 mb-3"
+        method="post"
+        action="/listings/delete/<%= card._id %>?_method=delete"
+      >
+        <button class="show-card-listing-button btn btn-danger btn-sm">
+          Delete
+        </button>
+      </form>
+    </div>
+    <% } %> <% if( currUser ){ %>
+    <hr />
+    <form
+      novalidate
+      class="needs-validation mt-3 review-form"
+      method="post"
+      action="/listing/<%= card._id %>/reviews"
+    >
+      <h4 class="mb-3">Leave A Review</h4>
+      <label for="rating" class="form-label mb-0">Rating</label>
+      <fieldset class="starability-slot">
+        <input
+          type="radio"
+          id="no-rate"
+          class="input-no-rate"
+          name="review[rating]"
+          value="1"
+          checked
+          aria-label="No rating."
+        />
+        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+        <label for="first-rate1" title="Terrible">1 star</label>
+        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+        <label for="first-rate2" title="Not good">2 stars</label>
+        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+        <label for="first-rate3" title="Average">3 stars</label>
+        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+        <label for="first-rate4" title="Very good">4 stars</label>
+        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+        <label for="first-rate5" title="Amazing">5 stars</label>
+      </fieldset>
+      <div>
+        <label for="exampleFormControlTextarea1" class="form-label mb-2"
+          >Give Your Valuable Review</label
+        >
+        <textarea
+          class="form-control review-textarea"
+          rows="3"
+          name="review[comment]"
+          required
+        ></textarea>
+        <div class="invalid-feedback mt-0">please enter review</div>
+        <div class="valid-feedback mt-0">looks good!</div>
+      </div>
+      <button class="btn btn-success mt-3 mb-3 btn-sm">Submit</button>
+    </form>
+    <% } %> <% if(card.reviews.length) {%>
+    <hr />
+    <h4>All Reviews</h4>
+    <% } %>
+    <div
+      class="row row-cols-xl-3 row-cols-lg-2 row-cols-md-2 row-cols-sm-1 row-cols-1 g-3 mb-3 mt-3 review-card-body"
+    >
+      <% for (let review of card.reviews) { %>
+      <div class="col">
+        <div class="card review-card p-3">
+          <div class="card-body">
+            <h6 class="card-title">@<%= review.author.username %></h6>
+            <p class="starability-result" data-rating="<%=review.rating %>"></p>
+            <p class="card-text review-content"><%=review.comment %></p>
+            <form
+              method="post"
+              action="/listing/<%= card._id %>/reviews/<%=review._id%>?_method=delete"
+            >
+              <% if(currUser && review.author.equals(currUser._id)) { %>
+              <button class="btn btn-dark btn-sm">Delete</button>
+              <% } %>
+            </form>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+<script>
+  window.lat = <%- JSON.stringify(lat) %>;
+  window.lon = <%- JSON.stringify(lon) %>;
+  window.placeName = <%- JSON.stringify(location) %>;
+</script>
