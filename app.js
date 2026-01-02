@@ -25,12 +25,12 @@ const dbUrl = process.env.ATLASDB_URL;
 const store = MongoStore.create({
   mongoUrl: dbUrl,
   touchAfter: 24 * 3600,
-  cryptoAdapter: createWebCryptoAdapter({ secret: "mysectercode" }),
+  cryptoAdapter: createWebCryptoAdapter({ secret: process.env.SECRET }),
 })
 
 const sessionOption = {
   store: store,
-  secret: "mysecretcode",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -101,3 +101,4 @@ app.use((err, req, res, next) => {
   const { status = 500, message = "something went wrong" } = err;
   res.status(status).render("errorEJS/error.ejs", { message });
 });
+
