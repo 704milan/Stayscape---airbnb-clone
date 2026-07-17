@@ -9,7 +9,7 @@
         alt="listing-image"
       />
 
-      <div class="card-text">Owned by <i><%= card.owner.username %></i></div>
+      <div class="card-text">Owned by <i><%= card.owner ? card.owner.username : 'Unknown User' %></i></div>
       <div class="card-text mt-3"><%= card.description %></div>
       <div class="card-text mt-2">
         &#8377;<%= card.price.toLocaleString("en-IN") %>
@@ -17,9 +17,9 @@
       <div class="card-text mt-2"><%= card.location %></div>
       <div class="card-text mt-2"><%= card.country %></div>
       <br />
-      <h4 class="mt-3">Where you'll be</h4>
+      <h4 class="mt-3">Where you'll be</h4> 
       <div id="map" class="show-card-img"></div>
-      <% if (currUser && (currUser._id.equals(card.owner._id))) { %>
+      <% if (currUser && card.owner && (currUser._id.equals(card.owner._id))) { %>
       <div class="row row-cols-lg-5 row-cols-md-5 show-card-btns">
         <form class="mt-3" method="get" action="/listings/edit/<%= card._id %>">
           <button class="show-card-listing-button btn btn-info btn-sm">
