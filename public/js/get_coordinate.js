@@ -9,6 +9,7 @@ module.exports.getCoordinates = async(location) => {
     });
     return response.data[0];
   } catch (error) {
-    next(error);
+    console.error("Geocoding API error:", error.message);
+    return null;
   }
 };

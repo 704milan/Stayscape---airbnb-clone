@@ -39,7 +39,7 @@ module.exports.addNewListing = async (req, res, next) => {
   newListing.owner = req.user._id;
   // newListing.image = { url, filename };
   let {location} = req.body.Listing;
-  let response = await getCoordinates(location);
+  let response = await getCoordinates(location) || {};
   let {lon ,lat} = response;
   console.log("lon : ",lon,"lat : ",lat);
   await newListing.save();
