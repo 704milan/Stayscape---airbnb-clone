@@ -1,0 +1,31 @@
+<% layout("/layouts/boilerplate") -%>
+<body>
+  <div
+    class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 allLisstings"
+  >
+    <% for (let listing of allListings){ %>
+    <div class="listing-card card col">
+      <a
+        class="listing-image-click"
+        href="/listings/listing/<%= listing._id %>"
+      >
+        <img
+          src="<%= listing.image.url %>"
+          class="card-img-top"
+          alt="listing_image"
+        />
+        <div class="card-hover-effect card-img-overlay"></div>
+      </a>
+      <a class="listing-text-click" href="/listings/listing/<%= listing._id %>">
+        <div class="card-body">
+          <p class="card-text">
+            <b><%=listing.title%></b>
+            <br />
+            &#8377;<%=listing.price.toLocaleString("en-IN")%>/night
+          </p>
+        </div>
+      </a>
+    </div>
+    <%}%>
+  </div>
+</body>

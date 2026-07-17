@@ -1,0 +1,107 @@
+<% layout("/layouts/boilerplate") -%>
+<body>
+  <div class="row g-0 mt-3">
+    <div class="col-6 offset-3">
+      <div class="mb-3">
+        <h1>Edit listing</h1>
+      </div>
+      <form
+        method="post"
+        action="/listings/edit/<%= oldListing._id %>?_method=put"
+        class="needs-validation"
+        novalidate
+        enctype="multipart/form-data"
+      >
+        <div>
+          <div class="mb-3">
+            <label for="title" class="form-label mb-0">Title</label>
+            <input
+              value="<%= oldListing.title %>"
+              class="form-control newListing-input"
+              type="text"
+              name="Listing[title]"
+              required
+            />
+            <div class="invalid-feedback mt-0">enter valid title</div>
+            <div class="valid-feedback mt-0">looks good!</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="price" class="form-label mb-0">Price</label>
+            <input
+              value="<%= oldListing.price %>"
+              class="form-control newListing-input"
+              type="text"
+              name="Listing[price]"
+              required
+            />
+            <div class="invalid-feedback mt-0">enter valid price</div>
+            <div class="valid-feedback mt-0">looks good!</div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-lg-8 col-md-8">
+              <label for="location" class="form-label mb-0">Location</label>
+              <input
+                value="<%= oldListing.location %>"
+                class="form-control newListing-input"
+                type="text"
+                name="Listing[location]"
+                required
+              />
+              <div class="invalid-feedback mt-0">enter valid location</div>
+              <div class="valid-feedback mt-0">looks good!</div>
+            </div>
+
+            <div class="col-lg-4 col-md-4">
+              <label for="country" class="form-label mb-0">Country</label>
+              <input
+                value="<%= oldListing.country %>"
+                class="form-control newListing-input"
+                type="text"
+                name="Listing[country]"
+                required
+              />
+            </div>
+            <div class="invalid-feedback mt-0">enter valid country</div>
+            <div class="valid-feedback mt-0">looks good!</div>
+          </div>
+          <p class="mb-0">current image</p>
+          <div >
+            <img class="edit-image-preview" src="<%= oldListing.image.url %>">
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label mt-3 mb-0">upload New Image</label>
+            <input
+              value="<%= oldListing.image.url %>"
+              class="form-control newListing-input"
+              type="file"
+              name="Listing[image]"
+            />
+            <div class="valid-feedback mt-0">looks good!</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label mb-0">Description</label>
+            <textarea
+              type="text"
+              class="form-control newListing-description newListing-input"
+              name="Listing[description]"
+              rows="3"
+              cols="20"
+              required
+            >
+<%= oldListing.description %></textarea
+            >
+            <div class="invalid-feedback mt-0">enter description</div>
+            <div class="valid-feedback mt-0">looks good!</div>
+          </div>
+
+          <div class="mb-3">
+            <button class="btn btn-danger">Change</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

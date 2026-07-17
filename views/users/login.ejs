@@ -1,0 +1,30 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+<body>
+  <div class="row g-0 mt-3">
+    <div class="col-6 offset-3 ">
+      <div class="mb-3">
+        <h1>Login on Stayscape</h1>
+      </div>
+      <form
+        method="post"
+        action="/user/login"
+        class="needs-validation"
+        novalidate
+      >
+        <div class="mb-3">
+          <label for="username" class="form-label mb-0">Username</label>
+          <input class="form-control user-login" name="username" type="text" required />
+          <div class="invalid-feedback mt-0">enter username</div>
+          <div class="valid-feedback mt-0">looks good!</div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label mb-0">Password</label>
+          <input class="form-control user-login" name="password" type="password" required />
+          <div class="invalid-feedback mt-0">enter password</div>
+          <div class="valid-feedback mt-0">looks good!</div>
+        </div>
+        <button class="btn btn-success">Login</button>
+      </form>
+    </div>
+  </div>
+</body>

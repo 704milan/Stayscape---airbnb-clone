@@ -1,0 +1,30 @@
+<!-- flash-success -->
+
+<% if(success.length){ %>
+<div class="success-flash-row-div row">
+  <div class="alert alert-success alert-dismissible fade show col-4 offset-4 mt-3 mb-0" role="alert ">
+    <b><%= success %></b>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>
+<% } %>
+
+<!-- flash-failure -->
+
+<% if(failure.length){ %>
+<div class="failure-flash-row-div row">
+  <div class="alert alert-danger alert-dismissible fade show col-4 offset-4 mt-3 mb-0" role="alert ">
+    <b><%= failure %></b>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>
+<% } %>
+
+<% if(error.length){ %>
+<div class="error-flash-row-div row">
+  <div class="alert alert-danger alert-dismissible fade show col-4 offset-4 mt-3 mb-0" role="alert ">
+    <b><%= error %></b>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>
+<% } %>
