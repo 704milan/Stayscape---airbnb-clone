@@ -54,7 +54,7 @@ app.listen(port, () => {
   console.log(`server is on at ${port}`);
 });
 app.get("/", (req, res) => {
-  res.send("root is working");
+  res.redirect("/listings");
 });
 
 const mongoose = require("mongoose");
